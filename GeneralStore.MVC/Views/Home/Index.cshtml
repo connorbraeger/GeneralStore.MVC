@@ -18,13 +18,16 @@
         @Html.ActionLink("Check Products", "Index", "Product", null, new { @class = "btn btn-primary btn-large" })
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Customers</h2>
+        <p>Our General Store values its customers. So much so that we like to keep track of every single customer so we can best serve their needs.</p>
+        @Html.ActionLink("Check Customers", "Index", "Customer", null, new { @class = "btn btn-primary btn-large" })
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Transactions</h2>
+        <p>
+            We here at the General Store pride ourselves on our ability to keep everthing above board.<br />
+            Click here to check out our public ledger, it may not be as sophisticated as a block-chain but we value it nonetheless.
+        </p>
+        @Html.ActionLink("Check Transactions", "Index", "Transaction", null, new { @class = "btn btn-primary btn-large" })
     </div>
 </div>
