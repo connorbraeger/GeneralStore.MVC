@@ -41,6 +41,20 @@ namespace GeneralStore.MVC.Controllers
                 return RedirectToAction("Index");
                // return Redirect("/transaction/" + createdObj.TransactionId);
             }
+            ViewData["Products"] = _db.Products.Select(p
+               => new SelectListItem
+               {
+                   Text = p.Name,
+                   Value = p.ProductId.ToString()
+               });
+            ViewData["Customers"] = _db.Customers.Select(c
+                => new SelectListItem
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString()
+                });
+            // ViewData["ErrMessage"]
+            return View(model);
             return View(model);
         }
         public ActionResult Details(int? id)
@@ -74,8 +88,23 @@ namespace GeneralStore.MVC.Controllers
             var entity = _db.Transactions.Find(model.TransactionId);
             entity.CustomerId = model.CustomerId;
             entity.ProductId = model.ProductId;
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (_db.SaveChanges() == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            ViewData["Products"] = _db.Products.Select(p
+               => new SelectListItem
+               {
+                   Text = p.Name,
+                   Value = p.ProductId.ToString()
+               });
+            ViewData["Customers"] = _db.Customers.Select(c
+                => new SelectListItem
+                {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.CustomerId.ToString()
+                });
+            return View(model);
         }
         public ActionResult Delete(int? id)
         {
